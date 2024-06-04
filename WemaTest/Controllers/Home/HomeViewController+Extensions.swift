@@ -26,10 +26,10 @@ extension HomeViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let city = searchField.text {
-                        weatherModel.getCityName(cityName: city)
+            weatherModel.getCityName(cityName: city)
         }
         DispatchQueue.main.async {
-                        self.weatherModel.receiveData()
+            self.weatherModel.receiveData()
         }
     }
 }
@@ -39,18 +39,15 @@ extension HomeViewController:WeatherDataDelegate {
         DispatchQueue.main.async {
             self.errorField.text = data.localizedDescription.capitalized
             self.errorField.isHidden = false
-
+            
         }
-
+        
         DispatchQueue.main.asyncAfter(deadline:.now() + 3.0) {
-            self.errorField.text = self.error
-                    self.errorField.isHidden = true
-                }
+            self.errorField.isHidden = true
+        }
     }
     
     func receiveData(_ data: WeatherModel) {
-        self.weatherData = data
-
         let storyboard = self.storyboard?.instantiateViewController(identifier: "DetailView") as! DetailViewController
         storyboard.weatherData = data
         self.navigationController?.pushViewController(storyboard, animated: true)

@@ -24,7 +24,7 @@ struct WeatherResource: WeatherProtocol {
     func getWeatherData(completion: @escaping(Result<WeatherModel, UserError>) -> Void){
         
         guard let url = URL(string: urlString) else {
-            completion(.failure(.invalidURL("")))
+            completion(.failure(.invalidURL()))
             return
         }
         

@@ -14,9 +14,8 @@ protocol WeatherDataDelegate: AnyObject{
 
 class WeatherViewModel {
     weak var delegate: WeatherDataDelegate?
-   
-   public var weatherResource: WeatherProtocol?
-   public var currentWeather: WeatherModel?
+    
+    public var weatherResource: WeatherProtocol?
     
     func getCityName(cityName: String) {
         let urlString = "\(Link.currentLink)\(API.id)\(API.lock)\(Units.id)\(Units.celcius)\(Cities.id)\(cityName)"
@@ -27,7 +26,6 @@ class WeatherViewModel {
         weatherResource?.getWeatherData { [weak self] result in
             switch result {
             case .success(let listOf):
-                self?.currentWeather = listOf
                 self?.delegate?.receiveData(listOf)
             case .failure(let error):
                 self?.delegate?.errorhandler(error)

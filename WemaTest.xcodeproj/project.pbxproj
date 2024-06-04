@@ -23,7 +23,7 @@
 		AEC5CFBE2C0E4EEF0000EF94 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5CFBD2C0E4EEF0000EF94 /* WeatherModel.swift */; };
 		AEC5CFC22C0E4F6E0000EF94 /* WeatherResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5CFC12C0E4F6E0000EF94 /* WeatherResource.swift */; };
 		AEC5CFC42C0E4F890000EF94 /* HttpUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5CFC32C0E4F890000EF94 /* HttpUtility.swift */; };
-		AEC5CFC82C0F44270000EF94 /* NewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5CFC72C0F44270000EF94 /* NewTest.swift */; };
+		AEC5CFC82C0F44270000EF94 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5CFC72C0F44270000EF94 /* UnitTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +64,7 @@
 		AEC5CFBD2C0E4EEF0000EF94 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		AEC5CFC12C0E4F6E0000EF94 /* WeatherResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResource.swift; sourceTree = "<group>"; };
 		AEC5CFC32C0E4F890000EF94 /* HttpUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtility.swift; sourceTree = "<group>"; };
-		AEC5CFC72C0F44270000EF94 /* NewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTest.swift; sourceTree = "<group>"; };
+		AEC5CFC72C0F44270000EF94 /* UnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				AEC5CF8F2C0DFD780000EF94 /* WemaTestTests.swift */,
-				AEC5CFC72C0F44270000EF94 /* NewTest.swift */,
+				AEC5CFC72C0F44270000EF94 /* UnitTest.swift */,
 			);
 			path = WemaTestTests;
 			sourceTree = "<group>";
@@ -379,7 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEC5CFC82C0F44270000EF94 /* NewTest.swift in Sources */,
+				AEC5CFC82C0F44270000EF94 /* UnitTest.swift in Sources */,
 				AEC5CF902C0DFD780000EF94 /* WemaTestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

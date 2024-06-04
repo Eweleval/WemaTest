@@ -38,10 +38,6 @@ class DetailViewController: UIViewController {
         view.backgroundColor = .systemBlue
         self.navigationController?.navigationBar.tintColor = .black
         
-        print(weatherData ?? [])
-        print(weatherData?.weather[0].weatherDescription ?? "Its Bad")
-        print("Temperature: \( weatherData?.main.temp ?? 0)°C")
-        
         descriptionLabel.text = "Weather Description: \( weatherData?.weather[0].weatherDescription.capitalized ?? "Its Bad")"
         temperatureLabel.text = "Temperature: \(Int( weatherData?.main.temp ?? 0))°C"
         

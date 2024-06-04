@@ -11,12 +11,10 @@ class HomeViewController: UIViewController{
    
     
     @IBOutlet weak var searchField: UITextField!
-    let userDefaults: UserDefaults = .standard
-    var error: String?
     @IBOutlet weak var errorField: UILabel!
    
+    let userDefaults: UserDefaults = .standard
     let weatherModel = WeatherViewModel()
-    var weatherData: WeatherModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
