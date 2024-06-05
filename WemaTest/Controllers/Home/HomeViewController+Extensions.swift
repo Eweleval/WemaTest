@@ -13,28 +13,9 @@ extension HomeViewController: UITextFieldDelegate {
         searchField.endEditing(true)
         return true
     }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if textField.text != "" {
-            textField.placeholder = "Enter a city"
-            return true
-        } else {
-            textField.placeholder = "Enter a city"
-            return false
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if let city = searchField.text {
-            weatherModel.getCityName(cityName: city)
-        }
-        DispatchQueue.main.async {
-            self.weatherModel.receiveData()
-        }
-    }
 }
 
-extension HomeViewController:WeatherDataDelegate {
+extension HomeViewController: WeatherDataDelegate {
     func errorhandler(_ data: UserError) {
         DispatchQueue.main.async {
             self.errorField.text = data.localizedDescription.capitalized
@@ -43,14 +24,21 @@ extension HomeViewController:WeatherDataDelegate {
         }
         
         DispatchQueue.main.asyncAfter(deadline:.now() + 3.0) {
+            self.loader.stopAnimating()
+            self.checkButton.isEnabled = true
             self.errorField.isHidden = true
+            self.searchField.isEnabled = true
         }
+        print(data)
     }
     
     func receiveData(_ data: WeatherModel) {
-        let storyboard = self.storyboard?.instantiateViewController(identifier: "DetailView") as! DetailViewController
+        self.loader.stopAnimating()
+        let storyboard = self.storyboard?.instantiateViewController(identifier: Constant.storyBoardIdentifier) as! DetailViewController
         storyboard.weatherData = data
         self.navigationController?.pushViewController(storyboard, animated: true)
-        searchField.text = ""
+        searchField.text = Constant.empty
+        self.checkButton.isEnabled = true
+        self.searchField.isEnabled = true
     }
 }

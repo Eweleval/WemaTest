@@ -23,12 +23,22 @@ class WeatherViewModel {
     }
     
     func receiveData() {
-        weatherResource?.getWeatherData { [weak self] result in
-            switch result {
-            case .success(let listOf):
-                self?.delegate?.receiveData(listOf)
-            case .failure(let error):
-                self?.delegate?.errorhandler(error)
+        Task {
+            do {
+                guard let weatherResource = weatherResource else { return }
+                let weatherData: WeatherModel = try await weatherResource.getWeatherData()
+                DispatchQueue.main.async {
+                    self.delegate?.receiveData(weatherData)
+                }
+            } catch let error as UserError {
+                DispatchQueue.main.async {
+                    self.delegate?.errorhandler(error)
+                }
+            } 
+            catch {
+                DispatchQueue.main.async {
+                    self.delegate?.errorhandler(.unknownError(error.localizedDescription))
+                }
             }
         }
     }
