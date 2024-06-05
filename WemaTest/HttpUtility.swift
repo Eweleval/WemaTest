@@ -50,7 +50,6 @@ struct HTTPUtility: UtilityService {
             guard let response = response as? HTTPURLResponse, (200..<210).contains(response.statusCode) else {
                 do {
                     let dataMessage = try JSONDecoder().decode(APIError.self, from: data)
-                    print(dataMessage.message)
                     throw UserError.apiError(dataMessage.message)
                     
                 } catch {

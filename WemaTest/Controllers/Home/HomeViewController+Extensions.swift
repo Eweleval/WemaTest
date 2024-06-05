@@ -20,14 +20,13 @@ extension HomeViewController: WeatherDataDelegate {
         DispatchQueue.main.async {
             self.errorField.text = data.localizedDescription.capitalized
             self.errorField.isHidden = false
-            
+            self.loader.stopAnimating()
+            self.checkButton.isEnabled = true
+            self.searchField.isEnabled = true
         }
         
         DispatchQueue.main.asyncAfter(deadline:.now() + 3.0) {
-            self.loader.stopAnimating()
-            self.checkButton.isEnabled = true
             self.errorField.isHidden = true
-            self.searchField.isEnabled = true
         }
     }
     
