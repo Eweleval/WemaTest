@@ -14,7 +14,7 @@ class MockWeatherDelegate: WeatherDataDelegate {
     
     var expectation: XCTestExpectation?
     
-    func receiveData(_ data: WeatherModel) {
+    func receiveData(_ data: WemaTest.WeatherModel) {
         receivedData = data
         expectation?.fulfill()
     }
@@ -26,9 +26,9 @@ class MockWeatherDelegate: WeatherDataDelegate {
 }
 
 class MockWeatherService:  WeatherProtocol {
-    func getWeatherData(completion: @escaping (Result<WemaTest.WeatherModel, WemaTest.UserError>) -> Void) {
+    func getWeatherData() async throws -> WemaTest.WeatherModel {
         let weather = WeatherModel(weather:[ CurrentWeather(id: 2, main: "", weatherDescription: "Partly Cloud", icon: "")], main: CurrentMain(temp: 16.0, feelsLike: 20.0, tempMin: 14.0, tempMax: 16.0), name: "London")
-        completion(.success(weather))
+        return weather
     }
 }
 
@@ -54,16 +54,18 @@ class HomeViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testFetchWeather() {
+    func testFetchWeather()  {
         let expectation = self.expectation(description: "Get Weather")
         mockDelegate?.expectation = expectation
+        
         viewModel?.receiveData()
+        userDefaults?.set("London", forKey:  Constant.favCity)
+        waitForExpectations(timeout: 5, handler: nil)
+        
         XCTAssertNotNil(mockDelegate?.receivedData)
         XCTAssertEqual (mockDelegate?.receivedData?.name, "London")
         XCTAssertEqual(mockDelegate?.receivedData?.main.temp, 16.0)
         XCTAssertEqual(mockDelegate?.receivedData?.weather[0].weatherDescription, "Partly Cloud")
-
-        waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testGetFavoriteCity() {
@@ -72,4 +74,3 @@ class HomeViewModelTests: XCTestCase {
         }
     }
 }
-
