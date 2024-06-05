@@ -1,6 +1,6 @@
 # WemaTest
 ## Overview
-project is a simple weather application that fetches and displays weather data for a given city. It is built using the Model-View-ViewModel (MVVM) architecture pattern and leverages asynchronous programming with async/await to handle network requests. The app also includes unit tests to ensure the reliability of the data fetching and handling processes.
+Project is a simple weather application that fetches and displays weather data for a given city. It is built using the Model-View-ViewModel (MVVM) architecture pattern and leverages asynchronous programming with async/await to handle network requests. The app also includes unit tests to ensure the reliability of the data fetching and handling processes.
 
 ## Structure
 The application is divided into several key components:
