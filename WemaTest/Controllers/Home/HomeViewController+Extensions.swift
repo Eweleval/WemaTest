@@ -29,7 +29,6 @@ extension HomeViewController: WeatherDataDelegate {
             self.errorField.isHidden = true
             self.searchField.isEnabled = true
         }
-        print(data)
     }
     
     func receiveData(_ data: WeatherModel) {
